@@ -45,6 +45,7 @@ public class ServerActivity extends ActionBarActivity {
                     BluetoothAdapter bAdapter = BluetoothController.bluetoothAdapter;
 
                     Log.d("BLUETOOTH", "Iniciando Thread");
+                    bAdapter.setName("NinjaBluetooth");
                     serverSocket = bAdapter.listenUsingRfcommWithServiceRecord("Ninjandroid", uuid);
                     AsyncTask<Integer, Void, BluetoothSocket> acceptThread = new AsyncTask<Integer, Void, BluetoothSocket>() {
                         @Override

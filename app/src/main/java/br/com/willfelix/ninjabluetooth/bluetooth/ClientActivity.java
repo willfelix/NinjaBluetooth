@@ -42,9 +42,11 @@ public class ClientActivity extends ActionBarActivity {
         public void onReceive(Context context, Intent intent) {
             BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
             if (device != null && !devices.contains(device)) {
-                devices.add(device);
-                foundDevices.add(device.getName());
-                ninjaAdapter.notifyDataSetChanged();
+                if ( "NinjaBluetooth".equals(device.getName()) ) {
+                    devices.add(device);
+                    foundDevices.add(device.getName());
+                    ninjaAdapter.notifyDataSetChanged();
+                }
             }
         }
 
@@ -93,8 +95,8 @@ public class ClientActivity extends ActionBarActivity {
                         finish();
                     }
                 };
-
                 connectTask.execute(index);
+
             }
         });
     }
