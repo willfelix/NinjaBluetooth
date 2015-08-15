@@ -20,6 +20,8 @@ public class User implements Serializable {
 
     private byte[] image;
 
+    private Bitmap bitmap;
+
     private User() {
         name = "";
         image = null;
@@ -65,7 +67,14 @@ public class User implements Serializable {
     }
 
     public Bitmap getBitmap() {
+        if (bitmap != null)
+            return bitmap;
+
         return BitmapFactory.decodeByteArray(getImage(), 0, getImage().length);
+    }
+
+    public void setBitmap(Bitmap bitmap) {
+        this.bitmap = bitmap;
     }
 
     public boolean isAnother() {

@@ -11,6 +11,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import br.com.willfelix.ninjabluetooth.bluetooth.BluetoothController;
+import br.com.willfelix.ninjabluetooth.utils.ActivityUtils;
 import br.com.willfelix.ninjabluetooth.utils.NinjaListAdapter;
 import br.com.willfelix.ninjabluetooth.utils.User;
 
@@ -23,6 +24,7 @@ public class ChatActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
+        ActivityUtils.setFullScreen(this);
 
         adapter = new NinjaListAdapter(this);
         final ListView list = (ListView) findViewById(R.id.list);
@@ -62,12 +64,14 @@ public class ChatActivity extends AppCompatActivity {
         String msg = edit.getText().toString();
         edit.setText("");
 
-        User user = User.getInstance();
-        user.setMessage(msg);
-        adapter.addMessage(user);
-        adapter.notifyDataSetChanged();
+        if (msg != null && !msg.isEmpty() && !msg.trim().isEmpty()) {
+            User user = User.getInstance();
+            user.setMessage(msg);
+            adapter.addMessage(user);
+            adapter.notifyDataSetChanged();
 
-        controller.sendMessage(user);
+            controller.sendMessage(user);
+        }
     }
 
 }

@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,11 +22,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ActivityUtils.setFullScreen(this);
 
         TextView t = (TextView) findViewById(R.id.title);
         t.setText(User.getInstance().getName());
 
-        Button create = (Button) findViewById(R.id.btn_create);
+        ImageButton create = (ImageButton) findViewById(R.id.btn_create);
         create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -33,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button search = (Button) findViewById(R.id.btn_search);
+        ImageButton search = (ImageButton) findViewById(R.id.btn_search);
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

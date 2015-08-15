@@ -26,6 +26,7 @@ import android.widget.Toast;
 import java.io.ByteArrayOutputStream;
 import java.io.FileDescriptor;
 
+import br.com.willfelix.ninjabluetooth.utils.ActivityUtils;
 import br.com.willfelix.ninjabluetooth.utils.User;
 
 public class LoginActivity extends AppCompatActivity {
@@ -34,8 +35,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-        getSupportActionBar().setTitle("NinjaBluetooth");
+        ActivityUtils.setFullScreen(this);
+        ActivityUtils.createShortcut(this);
 
         ImageView profile = (ImageView) findViewById(R.id.img_profile);
         profile.setOnClickListener(new View.OnClickListener() {

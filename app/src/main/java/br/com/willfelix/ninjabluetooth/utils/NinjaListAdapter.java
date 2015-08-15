@@ -1,6 +1,10 @@
 package br.com.willfelix.ninjabluetooth.utils;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -66,6 +70,11 @@ public class NinjaListAdapter extends BaseAdapter {
         User item = itens.get(position);
         itemHolder.name.setText(item.getName());
         itemHolder.edit.setText(item.getMessage());
+
+        if (item.getImage() == null) {
+            Bitmap b = BitmapFactory.decodeResource(mInflater.getContext().getResources(), R.drawable.ninja);
+            item.setBitmap(b);
+        }
 
         if (item.isAnother()) {
             itemHolder.image2.setImageBitmap(item.getBitmap());

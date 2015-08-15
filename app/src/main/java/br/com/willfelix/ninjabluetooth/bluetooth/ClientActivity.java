@@ -46,6 +46,8 @@ public class ClientActivity extends ActionBarActivity {
                     devices.add(device);
                     foundDevices.add(device.getName());
                     ninjaAdapter.notifyDataSetChanged();
+
+                    showButton();
                 }
             }
         }
@@ -56,6 +58,7 @@ public class ClientActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_client);
+        ActivityUtils.setFullScreen(this);
 
         //Iniciando Busca de Dispositivos
         startDiscovery();
@@ -99,6 +102,10 @@ public class ClientActivity extends ActionBarActivity {
 
             }
         });
+    }
+
+    private void showButton() {
+
     }
 
 

@@ -27,6 +27,7 @@ public class ServerActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_server);
+        ActivityUtils.setFullScreen(this);
 
         Intent discover = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
         discover.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 300);
@@ -96,7 +97,8 @@ public class ServerActivity extends ActionBarActivity {
         super.onDestroy();
 
         try {
-            serverSocket.close();
+            if (serverSocket != null)
+                serverSocket.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
